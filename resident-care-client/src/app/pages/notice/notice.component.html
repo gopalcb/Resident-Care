@@ -1,0 +1,118 @@
+
+<div class="col-md-12">
+  <div class="card">
+    <div class="card-header">
+      <h4 class="card-title"> Notices 
+        <a href="javascript:void(0);" (click)="triggerModal(modalData)" style="float: right; width: 33%; text-align: right;"> 
+          <i class="nc-simple-add nc-icon"></i> Add</a></h4>
+      
+    </div>
+    <div class="card-body">
+      <table class="table">
+        <thead class=" text-primary">
+          <th>
+            First Name
+          </th>
+          <th>
+            Last Name
+          </th>
+          <th>
+            Email
+          </th>
+          <th>
+            profession
+          </th>
+          <th>
+            Address
+          </th>
+          <th>
+            
+          </th>
+          <th>
+            
+          </th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>
+              {{user.first_name}}
+            </td>
+            <td>
+              {{user.last_name}}
+            </td>
+            <td>
+              {{user.email}}
+            </td>
+            <td>
+              {{user.profession}}
+            </td>
+            <td>
+              {{user.role}}
+            </td>
+            <td>
+              <a href="javascript:void(0);" (click)="triggerModal(modalData)"> 
+                <i class="nc-paper nc-icon"></i> Edit</a>
+            </td>
+            <td>
+              <a href="javascript:void(0);" (click)="triggerModal(modalData)"> 
+                <i class="nc-simple-remove nc-icon"></i> Delete</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<ng-template #modalData let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add User</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body" style="height: 400px; overflow: scroll;">
+    <form #userForm="ngForm" (ngSubmit)="onClickSubmit(userForm.value)">
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">First Name *</label>
+        <input [ngModel]="user.first_name" name="first_name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Firstname">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Last Name</label>
+        <input [ngModel]="user.last_name" name="last_name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Lastname">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Username</label>
+        <input [ngModel]="user.username" name="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Username">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email</label>
+        <input [ngModel]="user.email" name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input [ngModel]="user.password" name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Profession</label>
+        <input [ngModel]="user.profession" name="profession" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Profession">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Employment Details</label>
+        <input [ngModel]="user.employment_details" name="employment_details" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Employment Details">
+      </div>
+
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Close</button>
+    <button type="submit" class="btn btn-success" (click)="save(userForm.value)">Save</button>
+  </div>
+</ng-template>

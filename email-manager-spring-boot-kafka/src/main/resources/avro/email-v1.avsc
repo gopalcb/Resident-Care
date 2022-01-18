@@ -1,0 +1,18 @@
+{
+  "namespace": "com.email-manager",   (1)
+  "type": "record",
+  "name": "Email",
+  "fields": [
+    {"name": "id", "type": "int", "doc": "Email id"},
+    {"name": "email_subject", "type": "string", "doc": "Email subject"},
+    {"name": "email_body", "type": "string", "doc": "Email body"},
+    {"name": "email_from", "type": "string", "doc": "Email from"},
+    {"name": "email_to", "type": "string", "doc": "Email to"},
+    {"name": "email_cc", "type": "string", "doc": "Email cc"},
+    {"name": "email_bcc", "type": "string", "doc": "Email bcc"},
+    {"name": "email_folder", "type": "string", "doc": "Email folder"},
+    {"name": "to_user_id", "type": "int", "doc": "Email to user id"},
+    {"name": "is_read", "type": "boolean", "doc": "Email is read"},
+    {"name": "created_on", "type": "string", "doc": "Email created on"},
+  ]
+}

@@ -1,0 +1,165 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title"> Buildings
+          <a href="javascript:void(0);" (click)="triggerModal(modalData)"
+            style="float: right; width: 33%; text-align: right;">
+            <i class="nc-simple-add nc-icon"></i> Add</a>
+        </h4>
+
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <thead class=" text-primary">
+            <th>
+              Title
+            </th>
+            <th>
+              Address
+            </th>
+            <th>
+
+            </th>
+            <th>
+
+            </th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let bld of buildings">
+              <td>
+                {{bld.name}}
+              </td>
+              <td>
+                {{bld.address}}
+              </td>
+              <td>
+                <a href="javascript:void(0);" (click)="triggerModal(modalData)">
+                  <i class="nc-paper nc-icon"></i> Edit</a>
+              </td>
+              <td>
+                <a href="javascript:void(0);" (click)="deleteBuilding(bld)">
+                  <i class="nc-simple-remove nc-icon"></i> Delete</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title"> Apartments
+          <a href="javascript:void(0);" (click)="triggerModal(modalData2)"
+            style="float: right; width: 33%; text-align: right;">
+            <i class="nc-simple-add nc-icon"></i> Add</a>
+        </h4>
+
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <thead class=" text-primary">
+            <th>
+              Title
+            </th>
+            <th>
+              Address
+            </th>
+            <th>
+
+            </th>
+            <th>
+
+            </th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let apt of apts">
+              <td>
+                {{apt.name}}
+              </td>
+              <td>
+                {{apt.address}}
+              </td>
+              <td>
+                <a href="javascript:void(0);" (click)="triggerModal(modalData)">
+                  <i class="nc-paper nc-icon"></i> Edit</a>
+              </td>
+              <td>
+                <a href="javascript:void(0);" (click)="deleteApt(apt)">
+                  <i class="nc-simple-remove nc-icon"></i> Delete</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #modalData let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add Building</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body" style="height: 400px; overflow: scroll;">
+    <form #userForm="ngForm" (ngSubmit)="saveBuilding(userForm.value)">
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Name *</label>
+        <input [ngModel]="building.name" name="name" type="text" class="form-control" id="name"
+          aria-describedby="emailHelp" placeholder="Enter Name">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Address</label>
+        <input [ngModel]="building.address" name="address" type="text" class="form-control" id="address"
+          aria-describedby="emailHelp" placeholder="Enter Address">
+      </div>
+
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Close</button>
+    <button type="submit" class="btn btn-success" (click)="saveBuilding(userForm.value)">Save</button>
+  </div>
+</ng-template>
+
+<ng-template #modalData2 let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add Apartment</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body" style="height: 400px; overflow: scroll;">
+    <form #userForm2="ngForm" (ngSubmit)="saveBuilding(userForm.value)">
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Name *</label>
+        <input [ngModel]="apt.name" name="name" type="text" class="form-control" id="name"
+          aria-describedby="emailHelp" placeholder="Enter Name">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Building *</label>
+        <input [ngModel]="apt.buildingId" name="buildingId" type="text" class="form-control" id="buildingId"
+          aria-describedby="emailHelp" placeholder="Enter Building">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Address</label>
+        <input [ngModel]="apt.address" name="address" type="text" class="form-control" id="address"
+          aria-describedby="emailHelp" placeholder="Enter Address">
+      </div>
+
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Close</button>
+    <button type="submit" class="btn btn-success" (click)="saveApt(userForm2.value)">Save</button>
+  </div>
+</ng-template>

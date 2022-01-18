@@ -1,0 +1,127 @@
+<div class="row">
+
+  <div class="col-md-2">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title"> Folders</h4>
+      </div>
+      <div class="card-body">
+
+        <h6><a href="javascript:void(0);" (click)="triggerModal(modalData)" style="color: red;"> 
+          Inbox</a>
+        </h6><hr>
+
+        <h6><a href="javascript:void(0);" (click)="triggerModal(modalData)"> 
+          Sent</a>
+        </h6><hr>
+
+        <h6><a href="javascript:void(0);" (click)="triggerModal(modalData)"> 
+          Draft</a>
+        </h6><hr>
+
+        <h6><a href="javascript:void(0);" (click)="triggerModal(modalData)"> 
+          Spam</a>
+        </h6><hr>
+
+        <h6><a href="javascript:void(0);" (click)="triggerModal(modalData)"> 
+          Trash</a>
+        </h6><hr>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title"> Inbox</h4>
+      </div>
+      <div class="card-body">
+        
+        <div class="" style="cursor: pointer;" *ngFor="let email of emails"> 
+          <div class="subject">
+            <p style="font-weight: bold;">{{email}} </p>
+          </div><hr>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-7">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title"> Subject: Read email</h4>
+      </div>
+      <div class="card-body">
+        
+        <div class="">
+          <div class="subject">
+            <p style="font-weight: lighter;">From: test@gmail.com</p>
+            <p style="font-weight: lighter;">To: test@gmail.com</p>
+          </div><hr>
+          <div class="email-body">
+            <p style="font-weight: normal;">Email text body Email text body Email text body Email 
+              text body Email text body Email text body Email text body Email text body Email 
+              text body Email text body Email text body Email text body Email text body Email text body </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<ng-template #modalData let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add User</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body" style="height: 400px; overflow: scroll;">
+    <form #userForm="ngForm" (ngSubmit)="onClickSubmit(userForm.value)">
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">First Name *</label>
+        <input [ngModel]="user.first_name" name="first_name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Firstname">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Last Name</label>
+        <input [ngModel]="user.last_name" name="last_name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Lastname">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Username</label>
+        <input [ngModel]="user.username" name="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Username">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email</label>
+        <input [ngModel]="user.email" name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input [ngModel]="user.password" name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Profession</label>
+        <input [ngModel]="user.profession" name="profession" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Profession">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Employment Details</label>
+        <input [ngModel]="user.employment_details" name="employment_details" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Employment Details">
+      </div>
+
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Close</button>
+    <button type="submit" class="btn btn-success" (click)="save(userForm.value)">Save</button>
+  </div>
+</ng-template>
