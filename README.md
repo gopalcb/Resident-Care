@@ -1,6 +1,6 @@
 ## Resident-Care:
 
-### Languages and Tools:
+### Languages and Tools: 
 
 * Java
 * Sprint Boot
